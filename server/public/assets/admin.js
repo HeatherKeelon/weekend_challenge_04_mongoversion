@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('#userMessage').on('click', '.submit', addMessage);
-
+//the delete button stores the id for the deleted item in the deletedMessage variable. That is then sent the DELETE call further down. Again, the data is displayed minus the deleted item.
     $('#leftMessages').on('click', '.delete', function(){
         $(this).parent().remove();
         var deletedMessage = $(this).data("id");
@@ -46,7 +46,7 @@ function displayData(){
         }
     });
 }
-
+//leads to the delete route server side.
 function deleteMessage(deletedMessage){
     var id = {"id" : deletedMessage};
     console.log("This is delete message going into ajax: ", deletedMessage);

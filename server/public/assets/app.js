@@ -1,8 +1,8 @@
 $(document).ready(function(){
-
+//when the submit button is clicked, it triggers addMessage, which is the post call to the server to add the message in the form to the sever.
     $('#userMessage').on('click', '.submit', addMessage);
 
-    displayData();
+    displayData();//displayData is a get call that calls for all messages current stored in the server.
 });
 
 function addMessage() {
@@ -40,6 +40,7 @@ function displayData(){
     });
 }
 
+//appends any data sent from displayData. First action is to empty the messages area so that there is no duplication.
 function appendDOM(data){
     $('#leftMessages').empty();
 
