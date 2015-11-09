@@ -20,7 +20,10 @@ function addMessage() {
         values[field.name] = field.value;
     });
 
-    $("#userMessage").find("input[type=text]").val("");
+    console.log(values);
+    $('#name').val("");
+    $('#messageContent').val("");
+    //$("#userMessage").find("input[type=text]").val("");
 
     $.ajax({
         type: 'POST',
