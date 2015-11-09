@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="messageApp">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="../vendors/jquery.min.js"></script>
-    <script type="text/javascript" src="../vendors/jquery.min.map"></script>
-    <script type="text/javascript" src="../assets/admin.js"></script>
+    <script type="text/javascript" src="../vendors/angular.min.js"></script>
+    <script type="text/javascript" src="../assets/app.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Dancing+Script:700|EB+Garamond" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../vendors/bootstrap.min.css"/>
     <link rel="stylesheet" href="../assets/styles.css"/>
@@ -16,18 +15,26 @@
     <h1>Leave a Message</h1>
 </div>
 
+<div class="container" ng-controller="MessageController">
+    <div id="userName">
+        <form id="userMessage">
+            <label for="name">Name: </label>
+            <input ng-model="values.name" type="text" name="name" id="name"><br><br>
+            <label for="messageContent">Message: </label><br>
+            <textarea ng-model="values.messageContent" name="messageContent" id="messageContent" rows="5" cols="50"></textarea>
 
-<div id="userName">
-    <form id="userMessage">
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name"><br><br>
-        <label for="message">Message: </label><br>
-        <input type="text" name="messageContent" id="message">
-        <button class="btn btn-info submit">Submit</button>
-    </form>
+        </form>
+        <button ng-click="clickButton(values)" class="btn btn-info submit">Submit</button>
+    </div>
+
+    <div ng-repeat="messages in peopleArray" class="bottom-box" id="{{messages._id}}">
+        <div class="div-box well">
+            <p class="message-box">{{messages.message}}</p>
+            <p class="name-box">{{messages.name}}</p>
+            <button ng-click="deleteButton(messages._id)" class="btn btn-danger" data-id="{{messages._id}}">Delete</button>
+        </div>
+    </div>
 </div>
-
-<div id="leftMessages"></div>
 
 </body>
 </html>
